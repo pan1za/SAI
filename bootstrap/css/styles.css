@@ -1,0 +1,46 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.login-page, .register-page{
+    background-color: rgb(209, 201, 198);
+}
+
+/* .login-box, .register-logo{
+    width: 360px;
+    margin: 7% auto;
+    text-align: center;
+} */
+
+.login-logo img{
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.login-box-body, .register-box-body{
+    border: 1px solid #E1E1E1;
+    border-radius: 10px;
+    width: 300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(233, 232, 232);
+    padding: 17px;
+    border-top: 0;
+    color: #666;
+}
+
+.login-box-msg{
+    font-size: 22px;
+}
+
+#emailHelp{
+    text-align: left;
+}
+
+
