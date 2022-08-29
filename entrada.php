@@ -9,7 +9,7 @@ include "config/conexion.php";
     <?php
         include "include/head.php"
     ?>
-    <title>Home</title>
+    <title>Entrada</title>
 </head>
 <body>
     <?php
