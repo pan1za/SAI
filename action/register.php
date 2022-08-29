@@ -6,8 +6,8 @@
     $apellidos = $_POST["apellidos"];
     $email = $_POST["email"];
     $password = $_POST["password"];
-    $sqls = "select * from usuario where (email = \"$email\")";
-    $users = mysqli_query($conn,$sqls);
+    $query = "select * from usuario where (email = \"$email\")";
+    $users = mysqli_query($conn,$query);
     $count = mysqli_num_rows($users);
 
     if($count > 0){

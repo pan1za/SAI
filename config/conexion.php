@@ -1,8 +1,8 @@
 <?php
     $host = "localhost";
     $user = "root";
-    $password = "";
-    $db = "sai_prueba";
+    $password = "innova";
+    $db = "module";
 
     $conn = @mysqli_connect($host, $user, $password, $db);
     if(!$conn){
