@@ -1,13 +1,12 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-08-2022 a las 19:03:04
--- Versión del servidor: 8.0.30
--- Versión de PHP: 8.0.19
+-- Tiempo de generación: 30-08-2022 a las 18:05:37
+-- Versión del servidor: 10.4.21-MariaDB
+-- Versión de PHP: 7.3.31
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -28,21 +27,24 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `productos` (
-  `idProducto` int NOT NULL,
-  `nombreProducto` varchar(100) NOT NULL,
-  `cantidad` int NOT NULL,
+  `idProducto` int(11) NOT NULL,
+  `nombreProducto` varchar(50) NOT NULL,
+  `cantidad` int(11) NOT NULL,
+  `unidadMedida` varchar(20) NOT NULL,
   `fechaEntrada` date NOT NULL,
   `fechaVencimiento` date NOT NULL,
-  `suceso` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'Sin inconvenientes',
-  `FK_idUsuario` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `suceso` varchar(50) DEFAULT 'Sin inconvenientes',
+  `idUsuario` int(11) NOT NULL
+) ;
 
 --
 -- Volcado de datos para la tabla `productos`
 --
 
-INSERT INTO `productos` (`idProducto`, `nombreProducto`, `cantidad`, `fechaEntrada`, `fechaVencimiento`, `suceso`, `FK_idUsuario`) VALUES
-(1, 'Pan', 4, '2022-08-29', '2022-08-31', 'Sin inconvenientes', 2);
+INSERT INTO `productos` (`idProducto`, `nombreProducto`, `cantidad`, `unidadMedida`, `fechaEntrada`, `fechaVencimiento`, `suceso`, `idUsuario`) VALUES
+(1, 'Pan', 5, 'unidad', '2022-08-30', '2022-09-10', 'Sin inconvenientes', 2),
+(2, 'Huevos', 30, 'unidad', '2022-08-30', '2023-01-07', 'Sin inconvenientes', 2),
+(3, 'Camarones', 23, 'gramo', '2022-08-28', '2022-10-06', 'Sin inconvenientes', 3);
 
 -- --------------------------------------------------------
 
@@ -51,14 +53,14 @@ INSERT INTO `productos` (`idProducto`, `nombreProducto`, `cantidad`, `fechaEntra
 --
 
 CREATE TABLE `usuarios` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `nombres` varchar(50) NOT NULL,
   `apellidos` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   `username` varchar(50) NOT NULL,
   `usertype` varchar(50) NOT NULL DEFAULT 'user'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -66,7 +68,8 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `nombres`, `apellidos`, `email`, `password`, `username`, `usertype`) VALUES
 (1, 'Gustavo', 'Paniza', 'panizagustavo@gmail.com', '123', 'admin', 'admin'),
-(2, 'Adolfo', 'Salas', 'adolfosalas@gmail.com', '123', 'adolfo', 'user');
+(2, 'Adolfo', 'Salas', 'adolfosalas@gmail.com', '123', 'adolfo', 'user'),
+(3, 'Andres', 'Santamaria', 'andres@gmail.com', '123', 'andres', 'user');
 
 --
 -- Índices para tablas volcadas
@@ -77,7 +80,7 @@ INSERT INTO `usuarios` (`id`, `nombres`, `apellidos`, `email`, `password`, `user
 --
 ALTER TABLE `productos`
   ADD PRIMARY KEY (`idProducto`),
-  ADD UNIQUE KEY `FK_idUsuario` (`FK_idUsuario`);
+  ADD KEY `FK_idUsuario` (`idUsuario`);
 
 --
 -- Indices de la tabla `usuarios`
@@ -93,13 +96,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `idProducto` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `idProducto` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
@@ -109,7 +112,7 @@ ALTER TABLE `usuarios`
 -- Filtros para la tabla `productos`
 --
 ALTER TABLE `productos`
-  ADD CONSTRAINT `productos_ibfk_1` FOREIGN KEY (`FK_idUsuario`) REFERENCES `usuarios` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+  ADD CONSTRAINT `productos_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

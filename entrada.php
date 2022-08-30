@@ -28,6 +28,16 @@ include "config/conexion.php";
                 <input type="text" class="form-control" name="nombreProducto" required autofocus>
             </div>
             <div class="form-group mb-3">
+                <label for="cantidad" class="form-label">Unidad de medida</label>
+                <select class="form-select" name="unidadMedida" required>
+                    <option selected disabled value="">Seleccione una opción</option>
+                    <option value="unidad">Unidad</option>
+                    <option value="kilogramo">Kilogramo</option>
+                    <option value="gramo">Gramo</option>
+                </select>
+                <!-- <input type="number" name="cantidad" class="form-control" required> -->
+            </div>
+            <div class="form-group mb-3">
                 <label for="cantidad" class="form-label">Cantidad</label>
                 <input type="number" name="cantidad" class="form-control" required>
             </div>
