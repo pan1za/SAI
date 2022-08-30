@@ -1,7 +1,7 @@
 <?php
     $host = "localhost";
     $user = "root";
-    $password = "";
+    $password = "innova";
     $db = "module";
 
     $conn = @mysqli_connect($host, $user, $password, $db);

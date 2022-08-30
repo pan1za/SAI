@@ -5,7 +5,7 @@ include "config/conexion.php";
 
 <head>
     <?php include "include/head.php" ?>
-    <title>Salidas</title>
+    <title>Productos</title>
 </head>
 <?php include "include/navbar.php" ?>
 
@@ -20,31 +20,26 @@ include "config/conexion.php";
 } ?>
 
 <main class="container p-4">
-    <h3 class="offset-3 col-10">Registro de salidas</h3><br>
+    <h3 class="offset-3 col-10">Registro de productos</h3><br>
     <div class="card w-50 card-body offset-3 ">
-        <form action="action/guardarEntrada.php" method="POST">
+        <form action="action/guardarProducto.php" method="POST">
             <div class="form-group mb-3">
-                <label for="cantidad" class="form-label">Nombre del producto</label>
+                <label for="nombreProducto" class="form-label">Nombre del producto</label>
+                <input type="text" class="form-control" name="nombreProducto" required autofocus>
+            </div>
+            <div class="form-group mb-3">
+                <label for="cantidad" class="form-label">Unidad de medida</label>
                 <select class="form-select" name="unidadMedida" required>
-                    <option selected disabled value="">Seleccione una producto</option>
-                    <option value="unidad">Pan</option>
-                    <option value="kilogramo">Huevos</option>
-                    <option value="gramo">Camarones</option>
+                    <option selected disabled value="">Seleccione una opción</option>
+                    <option value="unidad">Unidad</option>
+                    <option value="kilogramo">Kilogramo</option>
+                    <option value="gramo">Gramo</option>
                 </select>
             </div>
-            <div class="form-group mb-3">
-                <label for="cantidad" class="form-label">Cantidad</label>
-                <input type="number" name="cantidad" class="form-control" required>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button type="submit" class="btn btn-success bt-block" name="guardarProducto">Guadar producto</button>
             </div>
-            <div class="form-group mb-3">
-                <label for="fechaEntrada" class="form-label">Fecha de entrada</label>
-                <input type="date" name="fechaEntrada" class="form-control" required>
-            </div>
-            <div class="form-group mb-3">
-                <label for="fechaVencimiento" class="form-label">Fecha de vencimiento</label>
-                <input type="date" name="fechaVencimiento" class="form-control" required>
-            </div>
-            <button type="submit" class="btn btn-success bt-block" name="guardarEntrada">Guadar entrada</button>
+            <!-- <button type="submit" class="btn btn-success bt-block" name="guardarProducto">Guadar producto</button> -->
         </form>
     </div>
 </main>

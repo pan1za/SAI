@@ -5,7 +5,7 @@ include "config/conexion.php";
 
 <head>
     <?php include "include/head.php" ?>
-    <title>Entrada</title>
+    <title>Entradas</title>
 </head>
 <?php include "include/navbar.php" ?>
 
@@ -24,18 +24,13 @@ include "config/conexion.php";
     <div class="card w-50 card-body offset-3 ">
         <form action="action/guardarEntrada.php" method="POST">
             <div class="form-group mb-3">
-                <label for="nombreProducto" class="form-label">Nombre del producto</label>
-                <input type="text" class="form-control" name="nombreProducto" required autofocus>
-            </div>
-            <div class="form-group mb-3">
-                <label for="cantidad" class="form-label">Unidad de medida</label>
+                <label for="cantidad" class="form-label">Nombre del producto</label>
                 <select class="form-select" name="unidadMedida" required>
-                    <option selected disabled value="">Seleccione una opción</option>
-                    <option value="unidad">Unidad</option>
-                    <option value="kilogramo">Kilogramo</option>
-                    <option value="gramo">Gramo</option>
+                    <option selected disabled value="">Seleccione una producto</option>
+                    <option value="unidad">Pan</option>
+                    <option value="kilogramo">Huevos</option>
+                    <option value="gramo">Camarones</option>
                 </select>
-                <!-- <input type="number" name="cantidad" class="form-control" required> -->
             </div>
             <div class="form-group mb-3">
                 <label for="cantidad" class="form-label">Cantidad</label>

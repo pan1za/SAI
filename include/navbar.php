@@ -8,7 +8,8 @@
             <div class="navbar-nav">
                 <a class="nav-link" aria-current="page" href="entrada.php">Registrar entrada</a>
                 <a class="nav-link" href="salida.php">Registrar salida</a>
-                <a class="nav-link" href="listaEntradas.php">Lista de productos</a>
+                <a class="nav-link" href="producto.php">Registrar producto</a>
+                <a class="nav-link" href="listaProductos.php">Lista de productos</a>
             </div>
         </div>
     </div>
