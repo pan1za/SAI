@@ -4,6 +4,7 @@
     $password = "innova";
     $db = "module";
 
+    // usar PDO 
     $conn = @mysqli_connect($host, $user, $password, $db);
     if(!$conn){
         @die("<h2 style='text-align:center'>Imposible conectarse a la base de datos</h2>");

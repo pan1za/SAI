@@ -24,12 +24,15 @@ include "config/conexion.php";
     <div class="card w-50 card-body offset-3 ">
         <form action="action/guardarEntrada.php" method="POST">
             <div class="form-group mb-3">
-                <label for="cantidad" class="form-label">Nombre del producto</label>
-                <select class="form-select" name="unidadMedida" required>
+                <label class="form-label">Nombre del producto</label>
+                <select class="form-select" name="idProducto" required>
                     <option selected disabled value="">Seleccione una producto</option>
-                    <option value="unidad">Pan</option>
-                    <option value="kilogramo">Huevos</option>
-                    <option value="gramo">Camarones</option>
+                    <?php foreach ($conn->query('SELECT * from productos') as $row) {
+                    ?>
+                        <option value="<?php echo $idProducto = $row["idProducto"]?>"><?php echo $row['nombreProducto'] ?></option>
+                    <?php
+                    }   
+                    ?>
                 </select>
             </div>
             <div class="form-group mb-3">

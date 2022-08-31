@@ -2,21 +2,23 @@
     session_start();
     include "../config/conexion.php";
 
+	// usar real_escape_string para mayor seguridad en la db
     $nombres = $_POST["nombres"];
     $apellidos = $_POST["apellidos"];
     $email = $_POST["email"];
     $password = $_POST["password"];
-    $query = "select * from usuario where (email = \"$email\")";
-    $users = mysqli_query($conn,$query);
-    $count = mysqli_num_rows($users);
+	$username = strstr($email, '@', true);
+    $query = "select * from usuarios where (email = \"$email\")";
+    $result = mysqli_query($conn,$query);
+    $row = mysqli_num_rows($result);
 
-    if($count > 0){
+    if($row > 0){
         $errors [] = "El correo ya existe en la base de datos";
     }else{
-        $sql = "insert into usuario (nombres, apellidos, email, password)";
-        $sql .= "value (\"$nombres\", \"$apellidos\", \"$email\", \"$password\")";
+        $query = "INSERT INTO `usuarios`(`nombres`, `apellidos`, `email`, `password`, `username`)
+        VALUES ('$nombres','$apellidos', '$email', '$password','$username')";
+        $query_new_insert = mysqli_query($conn,$query);
 
-        $query_new_insert = mysqli_query($conn,$sql);
 		if ($query_new_insert){
 			$messages[] = "Registro exitoso.";
 		} else{

@@ -3,14 +3,13 @@
     include "../config/conexion.php";
 
     if(isset($_POST["guardarEntrada"])){
-        $nombreProducto = $_POST["nombreProducto"];
-        $unidadMedida = $_POST["unidadMedida"];
-        $cantidad = $_POST["cantidad"];
+        $totalEntrada = $_POST["cantidad"];
         $fechaEntrada = $_POST["fechaEntrada"];
         $fechaVencimiento = $_POST["fechaVencimiento"];
+        $idProducto = $_POST["idProducto"];
 
-        $query = "INSERT INTO `productos`(`nombreProducto`, `cantidad`, `unidadMedida`, `fechaEntrada`, `fechaVencimiento`, `idUsuario`)
-        VALUES ('$nombreProducto','$cantidad', '$unidadMedida', '$fechaEntrada','$fechaVencimiento','3')";
+        $query = "INSERT INTO `entradas`(`totalEntrada`, `fechaEntrada`, `fechaVencimiento`, `idProducto`, `idUsuario`)
+        VALUES ('$totalEntrada', '$fechaEntrada','$fechaVencimiento', '$idProducto', '2')";
         $result = mysqli_query($conn, $query);
 
         if(!$result){

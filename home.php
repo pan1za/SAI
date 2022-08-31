@@ -15,6 +15,6 @@ include "config/conexion.php";
     <?php
         include "include/navbar.php"
     ?>
-    <!-- <h2>Bienvenido</h2><?php echo $_SESSION["email"] ?> -->
+    <h2>Bienvenido</h2><?php echo $_SESSION["email"] ?>
 </body>
 </html>

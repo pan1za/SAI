@@ -34,6 +34,8 @@ include "config/conexion.php";
                     <option value="unidad">Unidad</option>
                     <option value="kilogramo">Kilogramo</option>
                     <option value="gramo">Gramo</option>
+                    <option value="gramo">Mililitro</option>
+                    <!-- <option value="gramo">Litro</option> -->
                 </select>
             </div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
