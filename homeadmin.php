@@ -1,5 +1,4 @@
 <?php
-session_start();
 include "config/conexion.php";
 //include "action/login.php"
 ?>

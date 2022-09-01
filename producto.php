@@ -1,11 +1,10 @@
 <?php
-session_start();
 include "config/conexion.php";
 ?>
 
 <head>
     <?php include "include/head.php" ?>
-    <title>Productos</title>
+    <title>Registrar productos</title>
 </head>
 <?php include "include/navbar.php" ?>
 
@@ -34,7 +33,7 @@ include "config/conexion.php";
                     <option value="unidad">Unidad</option>
                     <option value="kilogramo">Kilogramo</option>
                     <option value="gramo">Gramo</option>
-                    <option value="gramo">Mililitro</option>
+                    <option value="mililitro">Mililitro</option>
                     <!-- <option value="gramo">Litro</option> -->
                 </select>
             </div>

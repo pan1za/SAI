@@ -7,9 +7,10 @@
         $fechaEntrada = $_POST["fechaEntrada"];
         $fechaVencimiento = $_POST["fechaVencimiento"];
         $idProducto = $_POST["idProducto"];
+        $idUsuario = $_SESSION["user_id"];
 
         $query = "INSERT INTO `entradas`(`totalEntrada`, `fechaEntrada`, `fechaVencimiento`, `idProducto`, `idUsuario`)
-        VALUES ('$totalEntrada', '$fechaEntrada','$fechaVencimiento', '$idProducto', '2')";
+        VALUES ('$totalEntrada', '$fechaEntrada','$fechaVencimiento', '$idProducto', $idUsuario)";
         $result = mysqli_query($conn, $query);
 
         if(!$result){

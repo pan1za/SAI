@@ -1,20 +1,17 @@
 <?php
-session_start();
 include "config/conexion.php";
+include "include/head.php";
+include "include/navbar.php";
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php
-        include "include/head.php"
-    ?>
     <title>Home</title>
 </head>
 <body>
-    <?php
-        include "include/navbar.php"
-    ?>
-    <h2>Bienvenido</h2><?php echo $_SESSION["email"] ?>
+
+    <h3>Bienvenido <?php echo $nombres . ' ' . $apellidos ?></h3>
 </body>
 </html>

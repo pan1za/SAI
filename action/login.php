@@ -12,7 +12,12 @@
         $row=mysqli_fetch_array($result);
 
         if($row["usertype"]=="user"){
-            $_SESSION["email"]=$email;
+            $_SESSION["user_id"] = $row["idUsuario"];
+            session_start();
+
+            // if(isset($_SESSION['email'])){
+            //     session_unset();
+            // }
             header("location:../home.php");
         }
         elseif($row["usertype"]=="admin"){

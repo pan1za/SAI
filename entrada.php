@@ -1,11 +1,10 @@
 <?php
-session_start();
 include "config/conexion.php";
 ?>
 
 <head>
     <?php include "include/head.php" ?>
-    <title>Entradas</title>
+    <title>Registrar entradas</title>
 </head>
 <?php include "include/navbar.php" ?>
 
@@ -26,10 +25,10 @@ include "config/conexion.php";
             <div class="form-group mb-3">
                 <label class="form-label">Nombre del producto</label>
                 <select class="form-select" name="idProducto" required>
-                    <option selected disabled value="">Seleccione una producto</option>
+                    <option selected disabled value="">Seleccione un producto</option>
                     <?php foreach ($conn->query('SELECT * from productos') as $row) {
                     ?>
-                        <option value="<?php echo $idProducto = $row["idProducto"]?>"><?php echo $row['nombreProducto'] ?></option>
+                        <option value="<?php echo $idProducto = $row["idProducto"]?>"><?php echo $row['nombreProducto'], ' (' . $row['unidadMedida'] . ')' ?></option>
                     <?php
                     }   
                     ?>
@@ -47,7 +46,9 @@ include "config/conexion.php";
                 <label for="fechaVencimiento" class="form-label">Fecha de vencimiento</label>
                 <input type="date" name="fechaVencimiento" class="form-control" required>
             </div>
-            <button type="submit" class="btn btn-success bt-block" name="guardarEntrada">Guadar entrada</button>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button type="submit" class="btn btn-success bt-block" name="guardarEntrada">Guadar entrada</button>
+            </div>
         </form>
     </div>
 </main>
