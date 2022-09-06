@@ -1,24 +1,16 @@
 <?php
-include "config/conexion.php";
+//include "config/conexion.php";
+include "include/head.php";
+include "include/navbar.php";
 ?>
 
 <head>
-    <?php include "include/head.php" ?>
     <title>Registrar salidas</title>
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <!-- <script src="plugins/jQuery/jquery-3.6.0.min.js"></script> -->
 </head>
-<?php include "include/navbar.php" ?>
+<!-- MESSAGE -->
 
-<?php if (isset($_SESSION['message'])) { ?>
-    <div class="alert alert-<?= $_SESSION['message_type'] ?> alert-dismissible fade show" role="alert">
-        <?= $_SESSION['message'] ?>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-<?php session_unset();
-} ?>
 
 <main class="container p-4">
     <h3 class="offset-3 col-10">Registro de salidas</h3><br>
@@ -26,7 +18,7 @@ include "config/conexion.php";
         <form action="action/guardarSalida.php" method="POST">
             <div class="form-group mb-3">
                 <label class="form-label">Nombre del producto</label>
-                <select class="form-select" id="producto" required>
+                <select class="form-select" id="producto" name="producto" required>
                     <option selected disabled>Seleccione un producto</option>
                     <?php 
                         $query = "SELECT * FROM productos";
@@ -39,7 +31,7 @@ include "config/conexion.php";
             </div>
             <div class="form-group mb-3">
                 <label class="form-label">Entrada</label>
-                <select class="form-select" id="entrada" required>
+                <select class="form-select" id="entrada" name="entrada" required>
                     <option selected disabled>Seleccione una entrada</option>
                 </select>
             </div>

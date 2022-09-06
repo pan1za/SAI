@@ -6,8 +6,8 @@
         $totalSalida = $_POST["cantidad"];
         $fechaSalida = $_POST["fechaSalida"];
         $idUsuario = $_SESSION["user_id"];
-        $idProducto = $_POST["idProducto"];
-        $idEntrada = $_POST["idEntrada"];
+        $idProducto = $_POST["producto"];
+        $idEntrada = $_POST["entrada"];
 
         $query = "INSERT INTO `salidas`(`totalSalida`, `fechaSalida`, `idUsuario`, `idProducto`, `idEntrada`)
         VALUES ('$totalSalida', '$fechaSalida','$idUsuario', '$idProducto', $idEntrada)";
@@ -19,6 +19,7 @@
 
         $_SESSION['message'] = 'Producto añadido correctamente';
         $_SESSION['message_type'] = 'success';
-        header('Location: ../entrada.php');
+        
     }
+    header('Location: ../salida.php');
 ?>

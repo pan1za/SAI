@@ -19,11 +19,13 @@
             //     session_unset();
             // }
             header("location:../home.php");
+            die();
         }
         elseif($row["usertype"]=="admin"){
             $_SESSION["user_id"]=$row["idUsuario"];
             session_start();
             header("location:../homeadmin.php");
+            die();
         }
         else{
             echo "<script>alert(\"Usuario o contraseña incorrecta\"); window.location=\"../index.php\"</script>";

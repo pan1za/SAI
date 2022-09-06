@@ -1,6 +1,5 @@
 <?php
-
-    require "config/conexion.php";
+    include "config/conexion.php";
 
     $idProducto = $_POST["idProducto"];
 
@@ -13,7 +12,7 @@
         if(mysqli_num_rows($result)>0){
             echo '<option selected="selected">Seleccione una entrada</option>';
             while($row=mysqli_fetch_array($result)){
-                echo '<option value='.$row['idProducto'].'>'.$row['fechaEntrada'].'</option>';
+                echo '<option value='.$row['idEntrada'].'>'.$row['fechaEntrada'].'</option>';
             }
         }
     }

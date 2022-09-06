@@ -1,5 +1,5 @@
 <?php
-include "config/conexion.php";
+//include "config/conexion.php";
 include "include/head.php";
 include "include/navbar.php";
 

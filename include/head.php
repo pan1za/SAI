@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include_once "config/conexion.php";
+    include "config/conexion.php";
 
     if (!isset($_SESSION["user_id"]) || $_SESSION["user_id"] == null) {
         header("location: index.php");
