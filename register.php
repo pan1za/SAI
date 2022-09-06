@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <?php
-        include "include/head.php";
-    ?>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="bootstrap\css\styles.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <script src="bootstrap/js/bootstrap.min.js"></script>
     <title>Registrarse - Sistema de Asesorías Innova</title>
 </head>
 
@@ -55,33 +60,32 @@
 
 
 
-<?php
+    <?php
     include "include/scripts.php";
-?>
+    ?>
 
-<script>
+    <script>
+        $("#add").submit(function(event) {
+            $('#save_data').attr("disabled", true);
 
-    $( "#add" ).submit(function( event ) {
-    $('#save_data').attr("disabled", true);
-
-    var parametros = $(this).serialize();
-    $.ajax({
-        type: "POST",
-        url: "action/register.php",
-        data: parametros,
-        beforeSend: function(objeto){
-            $("#result").html("Mensaje: Cargando...");
-        },
-            success: function(datos){
-            $("#result").html(datos);
-            $('#save_data').attr("disabled", false);
-        }
-    });
-event.preventDefault();
-})
-
-</script>
+            var parametros = $(this).serialize();
+            $.ajax({
+                type: "POST",
+                url: "action/register.php",
+                data: parametros,
+                beforeSend: function(objeto) {
+                    $("#result").html("Mensaje: Cargando...");
+                },
+                success: function(datos) {
+                    $("#result").html(datos);
+                    $('#save_data').attr("disabled", false);
+                }
+            });
+            event.preventDefault();
+        })
+    </script>
 
 
 </body>
+
 </html>

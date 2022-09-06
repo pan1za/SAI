@@ -21,7 +21,8 @@
             header("location:../home.php");
         }
         elseif($row["usertype"]=="admin"){
-            $_SESSION["email"]=$email;
+            $_SESSION["user_id"]=$row["idUsuario"];
+            session_start();
             header("location:../homeadmin.php");
         }
         else{
