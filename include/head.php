@@ -1,5 +1,4 @@
 <?php
-    // al cerrar sesión se explota por esto
     session_start();
     include_once "config/conexion.php";
 

@@ -6,9 +6,13 @@ include "config/conexion.php";
 <html lang="en">
 
 <head>
-    <?php
-        include "include/head.php";
-    ?>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="bootstrap\css\styles.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <script src="bootstrap/js/bootstrap.min.js"></script>
     <title>Iniciar sesión - Sistema de Asesorías Innova</title>
 </head>
 
@@ -38,8 +42,8 @@ include "config/conexion.php";
                     </div>
                 </div>
                 <div class="form-group mt-3">
-                            <button type="submit" name="login" value="login" class="btn btn-primary btn-flat w-100">Iniciar Sesion</button>
-                        </div>
+                    <button type="submit" name="login" value="login" class="btn btn-primary btn-flat w-100">Iniciar Sesion</button>
+                </div>
                 <div>
                     <p>¿No tienes cuenta? <a href="register.php">Regístrate</a></p>
                 </div>
@@ -47,7 +51,7 @@ include "config/conexion.php";
         </div>
     </div>
 
-<!-- <body>
+    <!-- <body>
 
     <div class="container">
         <div class="row">
@@ -84,7 +88,7 @@ include "config/conexion.php";
 
     <script>
         <?php
-            include "/include/scripts.php";
+        include "/include/scripts.php";
         ?>
     </script>
 
