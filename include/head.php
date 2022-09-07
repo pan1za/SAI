@@ -22,4 +22,4 @@
 <link rel="stylesheet" href="bootstrap\css\styles.css">
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-<script src="bootstrap/js/bootstrap.min.js"></script>
+<?php include "scripts.php"; ?>
