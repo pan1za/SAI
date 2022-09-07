@@ -55,23 +55,4 @@ include "config/conexion.php";
             </tbody>
         </table>
     </div>
-    <!-- <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre del producto</th>
-                <th>Unidad de medida</th>
-            </tr>
-        </thead>
-        <?php foreach ($conn->query('SELECT * from productos') as $row) {
-        ?>
-            <tr>
-                <td><?php echo $row['idProducto'] ?></td>
-                <td><?php echo $row['nombreProducto'] ?></td>
-                <td><?php echo $row['unidadMedida'] ?></td>
-            </tr>
-        <?php
-        }
-        ?>
-    </table> -->
 </main>
