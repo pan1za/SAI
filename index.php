@@ -1,5 +1,13 @@
 <?php
 include "config/conexion.php";
+
+if (!isset($_SESSION)) {
+    session_start();
+}
+if (isset($_SESSION["user_id"])=== true) {
+    header("location: home.php");
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
