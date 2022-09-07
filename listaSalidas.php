@@ -14,9 +14,9 @@ include "config/conexion.php";
         <table class="table">
             <thead>
                 <tr>
-                    <!-- <th scope="col">ID Entrada</th>
-                    <th scope="col">ID Producto</th> -->
-                    <th scope="col">ID del producto</th>
+                    <th scope="col">ID Salida</th>
+                    <th scope="col">ID Producto</th>
+                    <th scope="col">Nombre del producto</th>
                     <th scope="col">Total salida</th>
                     <th scope="col">Fecha de salida</th>
                     <th scope="col">ID de la Entrada</th>
@@ -25,16 +25,17 @@ include "config/conexion.php";
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($conn->query('SELECT productos.nombreProducto, totalEntrada, fechaEntrada, fechaVencimiento, usuarios.nombres, usuarios.apellidos 
-                FROM productos, entradas, usuarios WHERE productos.idProducto = entradas.idProducto AND usuarios.idUsuario = entradas.idUsuario;') as $row) {
+                <?php foreach ($conn->query('SELECT salidas.idSalida, salidas.idProducto, productos.nombreProducto, salidas.totalSalida, salidas.fechaSalida, salidas.idEntrada, 
+                usuarios.nombres, usuarios.apellidos FROM salidas, productos, usuarios WHERE productos.idProducto = salidas.idProducto AND 
+                usuarios.idUsuario = salidas.idUsuario ORDER BY salidas.idSalida;') as $row) {
                 ?>
                     <tr>
-                        <!-- <td><?php echo $row['idEntrada'] ?></td>
-                        <td><?php echo $row['idProducto'] ?></td> -->
+                        <td><?php echo $row['idSalida'] ?></td>
+                        <td><?php echo $row['idProducto'] ?>
                         <td><?php echo $row['nombreProducto'] ?></td>
-                        <td><?php echo $row['totalEntrada'] ?></td>
-                        <td><?php echo $row['fechaEntrada'] ?></td>
-                        <td><?php echo $row['fechaVencimiento'] ?></td>
+                        <td><?php echo $row['totalSalida'] ?></td>
+                        <td><?php echo $row['fechaSalida'] ?></td>
+                        <td><?php echo $row['idEntrada'] ?></td>
                         <td><?php echo $row['nombres'] . ' ' . $row['apellidos'] ?></td>
                         <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
