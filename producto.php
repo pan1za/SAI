@@ -8,9 +8,6 @@ include "config/conexion.php";
 </head>
 <?php include "include/navbar.php" ?>
 
-<!-- MESSAGE -->
-
-
 <main class="container p-4">
     <h3 class="offset-3 col-10">Registro de productos</h3><br>
     <div class="card w-50 card-body offset-3 ">
@@ -37,10 +34,6 @@ include "config/conexion.php";
         </form>
     </div>
 </main>
-
-<?php
-include "include/scripts.php";
-?>
 
 <script>
     $("#agregarProduto").submit(function(event) {
