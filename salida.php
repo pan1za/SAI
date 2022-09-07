@@ -15,7 +15,8 @@ include "include/navbar.php";
 <main class="container p-4">
     <h3 class="offset-3 col-10">Registro de salidas</h3><br>
     <div class="card w-50 card-body offset-3 ">
-        <form action="action/guardarSalida.php" method="POST">
+        <div id="result"></div>
+        <form id="agregarSalida" method="POST">
             <div class="form-group mb-3">
                 <label class="form-label">Nombre del producto</label>
                 <select class="form-select" id="producto" name="producto" required>
@@ -44,11 +45,32 @@ include "include/navbar.php";
                 <input type="date" name="fechaSalida" class="form-control" required>
             </div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <button type="submit" class="btn btn-success bt-block" name="guardarSalida">Guadar salida</button>
+                <button type="submit" class="btn btn-success bt-block" id="guardarSalida">Guadar salida</button>
             </div>
         </form>
     </div>
 </main>
+
+<script>
+    $("#agregarSalida").submit(function(event) {
+        $('#guardarSalida').attr("disabled", true);
+
+        var parametros = $(this).serialize();
+        $.ajax({
+            type: "POST",
+            url: "action/guardarSalida.php",
+            data: parametros,
+            beforeSend: function(objeto) {
+                $("#result").html("Mensaje: Cargando...");
+            },
+            success: function(datos) {
+                $("#result").html(datos);
+                $('#guardarSalida').attr("disabled", false);
+            }
+        });
+        event.preventDefault();
+    })
+</script>
 
 <script type="text/javascript">
     $(function(){
