@@ -11,7 +11,10 @@
 
         $row=mysqli_fetch_array($result);
 
-        if($row["usertype"]=="user"){
+        if(!$row){
+            echo "<script>alert(\"Usuario o contraseña incorrecta\"); window.location=\"../index.php\"</script>";
+            exit;
+        }elseif($row["usertype"]=="user"){
             $_SESSION["user_id"] = $row["idUsuario"];
             session_start();
 
@@ -19,16 +22,12 @@
             //     session_unset();
             // }
             header("location:../home.php");
-            die();
-        }
-        elseif($row["usertype"]=="admin"){
+            die(); 
+        }elseif ($row["usertype"]=="admin"){
             $_SESSION["user_id"]=$row["idUsuario"];
             session_start();
             header("location:../homeadmin.php");
             die();
-        }
-        else{
-            echo "<script>alert(\"Usuario o contraseña incorrecta\"); window.location=\"../index.php\"</script>";
         }
     }
 
