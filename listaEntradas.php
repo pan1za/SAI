@@ -14,9 +14,8 @@ include "config/conexion.php";
         <table class="table">
             <thead>
                 <tr>
-                    <!-- <th scope="col">ID Entrada</th>
-                    <th scope="col">ID Producto</th> -->
                     <th scope="col">Nombre del producto</th>
+                    <th scope="col">ID Entrada</th>
                     <th scope="col">Total entrada</th>
                     <th scope="col">Fecha de entrada</th>
                     <th scope="col">Fecha de vencimiento</th>
@@ -25,13 +24,12 @@ include "config/conexion.php";
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($conn->query('SELECT productos.nombreProducto, totalEntrada, fechaEntrada, fechaVencimiento, usuarios.nombres, usuarios.apellidos 
+                <?php foreach ($conn->query('SELECT productos.nombreProducto, idEntrada, totalEntrada, fechaEntrada, fechaVencimiento, usuarios.nombres, usuarios.apellidos 
                 FROM productos, entradas, usuarios WHERE productos.idProducto = entradas.idProducto AND usuarios.idUsuario = entradas.idUsuario;') as $row) {
                 ?>
                     <tr>
-                        <!-- <td><?php echo $row['idEntrada'] ?></td>
-                        <td><?php echo $row['idProducto'] ?></td> -->
                         <td><?php echo $row['nombreProducto'] ?></td>
+                        <td><?php echo $row['idEntrada'] ?></td>
                         <td><?php echo $row['totalEntrada'] ?></td>
                         <td><?php echo $row['fechaEntrada'] ?></td>
                         <td><?php echo $row['fechaVencimiento'] ?></td>

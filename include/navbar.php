@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="home.php"><img src="img/logo2.png" width="50"> Module</a>
+        <a class="navbar-brand" href="home.php"><img src="img/logo3.png" width="50"> Module</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -34,6 +34,20 @@
                         <li><a class="dropdown-item" href="listaEntradas.php">Entradas</a></li>
                         <li><a class="dropdown-item" href="listaSalidas.php">Salidas</a></li>
                         <li><a class="dropdown-item" href="listaProductos.php">Productos</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <ul></ul>
+                    <ul></ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Inventario
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="totalProductosIngresados.php">Total de productos ingresados</a></li>
+                        <li><a class="dropdown-item" href="totalProductosActuales.php">Total de productos actuales</a></li>
+                        <!-- <li><a class="dropdown-item" href="listaProductos.php">Productos</a></li> -->
                     </ul>
                 </li>
                 <li>
