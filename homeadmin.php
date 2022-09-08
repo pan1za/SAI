@@ -1,11 +1,14 @@
 <?php
 include "config/conexion.php";
-include "include/head.php";
-include "include/navbar.php";
 
 if($usertype != "admin"){
     header("location: home.php");
 }
+
+include "include/head.php";
+include "include/navbar.php";
+
+
 
 ?>
 
