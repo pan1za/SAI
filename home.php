@@ -1,12 +1,12 @@
 <?php
 //include "config/conexion.php";
 include "include/head.php";
-include "include/navbar.php";
 
 if($usertype != "user"){
     header("location: homeadmin.php");
 }
 
+include "include/navbar.php";
 ?>
 
 <!DOCTYPE html>
