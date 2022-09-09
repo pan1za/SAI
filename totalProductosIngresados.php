@@ -19,9 +19,8 @@ include "config/conexion.php";
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($conn->query('SELECT productos.nombreProducto, SUM(totalEntrada) as totalProductos 
-                FROM productos, entradas WHERE productos.idProducto = entradas.idProducto 
-                GROUP BY productos.nombreProducto;') as $row) {
+                <?php foreach ($conn->query('SELECT p.nombreProducto, SUM(totalEntrada) as totalProductos 
+                FROM productos p INNER JOIN entradas e ON p.idProducto = e.idProducto GROUP BY p.nombreProducto;') as $row) {
                 ?>
                     <tr>
                         <td><?php echo $row['nombreProducto'] ?></td>
