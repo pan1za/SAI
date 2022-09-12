@@ -12,7 +12,7 @@
         if(mysqli_num_rows($result)>0){
             echo '<option selected="selected" disabled value="">Seleccione una entrada</option>';
             while($row=mysqli_fetch_array($result)){
-                echo '<option value='.$row['idEntrada'].'>'.$row['fechaEntrada'].'</option>';
+                echo '<option value='.$row['idEntrada'].'>'.$row['fechaEntrada']. ' ('.$row['totalEntrada'].')' .'</option>';
             }
         }else{
             echo '<option selected disabled value="">No hay entradas de este producto</option>';
