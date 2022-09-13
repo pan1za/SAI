@@ -41,7 +41,8 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <li><a class="dropdown-item" href="totalProductosIngresados.php">Total de productos ingresados</a></li>
                         <li><a class="dropdown-item" href="totalSalidasProductos.php">Total de salidas por productos</a></li>
-                        <li><a class="dropdown-item" href="totalSalidasEntradas.php">Total de salidas por entradas</a></li>
+                        <li><a class="dropdown-item" href="totalProductosEntradas.php">Total de productos por entradas</a></li>
+                        <li><a class="dropdown-item" href="totalProductosInventario.php">Total de productos en inventario</a></li>
                     </ul>
                 </li>
                 <li>

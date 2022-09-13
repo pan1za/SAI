@@ -9,14 +9,14 @@ include "config/conexion.php";
 <?php include "include/navbar.php" ?>
 
 <main class="container p-4">
-    <h3 class="offset-4 col-10">Total de salidas por entradas</h3><br>
+    <h3 class="offset-4 col-10">Total de productos por entradas</h3><br>
     <div class="w-100 card-body offset-0">
         <table class="table">
             <thead>
                 <tr>
+                    <th scope="col">ID entrada</th>
                     <th scope="col">Nombre del producto</th>
                     <!-- <th scope="col">Fecha de entrada</th> -->
-                    <th scope="col">ID entrada</th>
                     <th scope="col">Entrada realizada por</th>
                     <th scope="col">Total entrada</th>
                     <th scope="col">Fecha de salida</th>
@@ -26,7 +26,7 @@ include "config/conexion.php";
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($conn->query('SELECT p.nombreProducto, e.idEntrada, u.nombres, u.apellidos, e.totalEntrada, 
+                <?php foreach ($conn->query('SELECT p.nombreProducto, e.idEntrada, u.nombres, u.apellidos, e.totalEntrada, p.unidadMedida, 
                 s.fechaSalida, u2.nombres as nombres2, u2.apellidos as apellidos2, 
                 SUM(s.totalSalida) as totalSalidaEntradas 
                 FROM productos p 
@@ -37,16 +37,16 @@ include "config/conexion.php";
                 GROUP BY e.idEntrada;') as $row) {
                 ?>
                     <tr>
+                        <td><?php echo $row['idEntrada'] ?></td>
                         <td><?php echo $row['nombreProducto'] ?></td>
                         <!-- <td><?php echo $row['fechaEntrada'] ?></td> -->
-                        <td><?php echo $row['idEntrada'] ?></td>
                         <td><?php echo $row['nombres'] . ' ' . $row['apellidos'] ?></td>
-                        <td><?php echo $row['totalEntrada'] ?></td>
+                        <td><?php echo $row['totalEntrada'] . ' ' . $row['unidadMedida'] . '(s)' ?></td>
                         <!-- <td><?php echo $row['fechaSalida'] ?></td> -->
                         <td><?php echo $row['fechaSalida'] ?></td>
                         <td><?php echo $row['nombres2'] . ' ' . $row['apellidos2'] ?></td>
-                        <td><?php echo $row['totalSalidaEntradas'] ?></td>
-                        <td><?php echo $row['totalEntrada'] - $row['totalSalidaEntradas']?></td>
+                        <td><?php echo $row['totalSalidaEntradas'] . ' ' . $row['unidadMedida'] . '(s)'?></td>
+                        <td><?php echo $row['totalEntrada'] - $row['totalSalidaEntradas'] . ' ' . $row['unidadMedida'] . '(s)'?></td>
                     </tr>
                 <?php
                 }
