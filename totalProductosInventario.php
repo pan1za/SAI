@@ -10,7 +10,7 @@ include "config/conexion.php";
 
 <main class="container p-4">
     <h3 class="offset-4 col-10">Total de productos en inventario</h3><br>
-    <div class="w-100 card-body offset-0">
+    <div class="w-50 card-body offset-3">
         <table class="table">
             <thead>
                 <tr>
@@ -19,14 +19,14 @@ include "config/conexion.php";
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($conn->query('SELECT p.nombreProducto, SUM(e.totalEntrada) as totalEntrada
+                <?php foreach ($conn->query('SELECT p.nombreProducto, i.totalActual, p.unidadMedida
                 FROM productos p 
-                INNER JOIN entradas e ON p.idProducto = e.idProducto 
+                INNER JOIN inventario i ON i.idProducto = p.idProducto 
                 GROUP BY p.nombreProducto;') as $row) {
                 ?>
                     <tr>
                         <td><?php echo $row['nombreProducto'] ?></td>
-                        <td><?php echo $row['totalEntrada'] ?></td>
+                        <td><?php echo $row['totalActual'] . ' &nbsp' . $row['unidadMedida'] . '(s)'?></td>
                     </tr>
                 <?php
                 }
