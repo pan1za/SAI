@@ -27,10 +27,12 @@ if (isset($_SESSION["user_id"])=== true) {
 <body class="login-page">
     <div class="login-box">
 
-        <!-- <div class="login-logo">
-            <a href=""><img src="img/logo.png"></a>
-        </div> -->
+        
         <div class="login-box-body">
+            <div class="login-logo">
+                <a href=""><img src="img/logo3.png"></a>
+            </div>
+            
             <p class="login-box-msg">Iniciar sesión</p>
             <form action="action/login.php" method="POST">
                 <div class="form-group has-feedback">
