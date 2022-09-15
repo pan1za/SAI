@@ -12,7 +12,7 @@ include "config/conexion.php";
     <h3 class="offset-5 col-10">Lista de entradas</h3><br>
     <div class="w-40 card-body ">
         <table class="table">
-            <thead>
+            <thead class="thead-dark">
                 <tr>
                     <th scope="col">Nombre del producto</th>
                     <th scope="col">ID Entrada</th>
@@ -53,3 +53,4 @@ include "config/conexion.php";
         </table>
     </div>
 </main>
+

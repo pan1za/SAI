@@ -7,7 +7,13 @@ html, body{
 }
 
 .login-page, .register-page{
-    background-color: rgb(209, 201, 198);
+    background-color: rgb(209, 201, 198);   
+    /* background: rgb(255,119,0);
+    background: linear-gradient(0deg, rgba(255,119,0,1) 0%, rgba(34,40,195,1) 100%); */
+}
+
+.page{
+    background-color: rgb(204, 35, 35);
 }
 
 /* .login-box, .register-logo{
@@ -17,12 +23,14 @@ html, body{
 } */
 
 .login-logo img{
-    max-width: 200px;
-    max-height: 200px;
+    max-width: 160px;
+    max-height: 160px;
+    display: block;
+    margin: auto;
 }
 
 .login-box-body, .register-box-body{
-    border: 1px solid #E1E1E1;
+    /* border: 1px solid #E1E1E1; */
     border-radius: 10px;
     width: 300px;
     position: absolute;
@@ -33,14 +41,20 @@ html, body{
     padding: 17px;
     border-top: 0;
     color: #666;
+    /* background: rgb(168,168,185);
+    background: radial-gradient(circle, rgba(168,168,185,1) 0%, rgba(168,168,185,1) 100%); */
 }
 
 .login-box-msg{
     font-size: 22px;
+    text-align: center;
+    font-weight: bold;
 }
 
-#emailHelp{
-    text-align: left;
+.table .thead-dark th {
+    color: #fff;
+    background-color: #343a40;
+    border-color: #454d55; 
 }
 
 
