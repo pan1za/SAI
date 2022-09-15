@@ -5,7 +5,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
+            <div class="navbar-nav ms-auto">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Registrar
@@ -43,6 +43,23 @@
                         <li><a class="dropdown-item" href="totalSalidasProductos.php">Total de salidas por productos</a></li>
                         <li><a class="dropdown-item" href="totalProductosEntradas.php">Total de productos por entradas</a></li>
                         <li><a class="dropdown-item" href="totalProductosInventario.php">Total de productos en inventario</a></li>
+
+                        <!-- <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Inventario
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <?php
+                                if ($usertype == "admin") { ?>
+                                    <li><a class="dropdown-item" href="totalProductosIngresados.php">Total de productos ingresados</a></li>
+                                    <li><a class="dropdown-item" href="totalSalidasProductos.php">Total de salidas por productos</a></li>
+                                <?php
+                                }
+                                ?>
+                                <li><a class="dropdown-item" href="totalProductosEntradas.php">Total de productos por entradas</a></li>
+                                <li><a class="dropdown-item" href="totalProductosInventario.php">Total de productos en inventario</a></li>
+                            </ul>
+                        </li> -->
                     </ul>
                 </li>
                 <li>
