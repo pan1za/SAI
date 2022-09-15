@@ -7,6 +7,7 @@ if($usertype != "user"){
 }
 
 include "include/navbar.php";
+// include "include/sidebar.php";
 ?>
 
 <!DOCTYPE html>

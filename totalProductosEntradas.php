@@ -22,7 +22,7 @@ include "config/conexion.php";
                     <th scope="col">Fecha de salida</th>
                     <th scope="col">Salida realizada por</th>
                     <th scope="col">Total salida</th>
-                    <th scope="col">Total actual</th>
+                    <th scope="col">Total actual (entrada)</th>
                 </tr>
             </thead>
             <tbody>

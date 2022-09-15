@@ -1,4 +1,3 @@
-<!-- Arreglar lo de session_unset porque al usarlo me saca de la sesión -->
 <?php if (isset($_SESSION['message'])) { ?>
     <div class="alert alert-<?= $_SESSION['message_type'] ?> alert-dismissible fade show" role="alert">
         <?= $_SESSION['message'] ?>
