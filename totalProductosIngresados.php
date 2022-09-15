@@ -8,7 +8,7 @@ include "config/conexion.php";
 </head>
 <?php include "include/navbar.php" ?>
 
-<main class="container p-4">
+<div class="container p-4">
     <h3 class="offset-4 col-10">Total de productos ingresados</h3><br>
     <div class="w-50 card-body offset-3">
         <table class="table">
@@ -32,4 +32,4 @@ include "config/conexion.php";
             </tbody>
         </table>
     </div>
-</main>
+</div>

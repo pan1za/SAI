@@ -12,7 +12,7 @@ include "include/navbar.php";
 <!-- MESSAGE -->
 
 
-<main class="container p-4">
+<div class="container p-4">
     <h3 class="offset-3 col-10">Registro de salidas</h3><br>
     <div class="card w-50 card-body offset-3 ">
         <div id="result"></div>
@@ -49,7 +49,7 @@ include "include/navbar.php";
             </div>
         </form>
     </div>
-</main>
+</div>
 
 <script>
     $("#agregarSalida").submit(function(event) {
