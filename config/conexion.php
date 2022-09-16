@@ -2,7 +2,7 @@
     $host = "localhost";
     $user = "root";
     $password = "innova";
-    $db = "module2";
+    $db = "module3";
 
     // usar PDO 
     $conn = @mysqli_connect($host, $user, $password, $db);
