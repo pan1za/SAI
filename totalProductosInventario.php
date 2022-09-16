@@ -19,7 +19,7 @@ include "config/conexion.php";
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($conn->query('SELECT p.nombreProducto, i.totalActual, p.unidadMedida
+                <?php foreach ($conn->query('SELECT p.nombreProducto, SUM(i.totalActual) as totalActual, p.unidadMedida 
                 FROM productos p 
                 INNER JOIN inventario i ON i.idProducto = p.idProducto 
                 GROUP BY p.nombreProducto;') as $row) {
