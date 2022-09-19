@@ -51,10 +51,10 @@ html, body{
     font-weight: bold;
 }
 
-.table .thead-dark th {
+.table .thead-dark th{
     color: #fff;
     background-color: #343a40;
-    border-color: #454d55; 
+     
 }
 
 
