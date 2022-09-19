@@ -11,8 +11,8 @@ include "config/conexion.php";
 <main class="container p-4">
     <h3 class="offset-4 col-10">Total de productos por entradas</h3><br>
     <div class="w-100 card-body offset-0">
-        <table class="table">
-            <thead>
+        <table class="table table-bordered">
+            <thead class="thead-dark" align="center">
                 <tr>
                     <th scope="col">ID entrada</th>
                     <th scope="col">Nombre del producto</th>
@@ -25,7 +25,7 @@ include "config/conexion.php";
                     <th scope="col">Total actual (entrada)</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody align="center">
                 <?php foreach ($conn->query('SELECT p.nombreProducto, e.idEntrada, u.nombres, u.apellidos, e.totalEntrada, p.unidadMedida, 
                 s.fechaSalida, u2.nombres as nombres2, u2.apellidos as apellidos2, 
                 SUM(s.totalSalida) as totalSalidaEntradas 
