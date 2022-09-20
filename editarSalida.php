@@ -4,9 +4,11 @@ $totalEntrada = '';
 $fechaEntrada = '';
 $fechaVencimiento = '';
 
-if (isset($_GET['idEntrada'])) {
-    $idEntrada = $_GET['idEntrada'];
-    $query = "SELECT * FROM entradas WHERE idEntrada=$idEntrada";
+//Terminar editar salida
+
+if (isset($_GET['idSalida'])) {
+    $idSalida = $_GET['idSalida'];
+    $query = "SELECT * FROM salidas WHERE idSalida=$idSalida";
     $result = mysqli_query($conn, $query);
     if (mysqli_num_rows($result) == 1) {
         $row = mysqli_fetch_array($result);
@@ -17,12 +19,12 @@ if (isset($_GET['idEntrada'])) {
 }
 
 if (isset($_POST['update'])) {
-    $idEntrada = $_GET['idEntrada'];
+    $idSalida = $_GET['idSalida'];
     $totalEntrada = $_POST['totalEntrada'];
     $fechaEntrada = $_POST['fechaEntrada'];
     $fechaVencimiento = $_POST['fechaVencimiento'];
 
-    $query = "UPDATE entradas set totalEntrada = '$totalEntrada', fechaEntrada = '$fechaEntrada', fechaVencimiento = '$fechaVencimiento' WHERE idEntrada=$idEntrada";
+    $query = "UPDATE entradas set totalEntrada = '$totalEntrada', fechaEntrada = '$fechaEntrada', fechaVencimiento = '$fechaVencimiento' WHERE idSalida=$idSalida";
     mysqli_query($conn, $query);
     $_SESSION['message'] = 'Producto editado correctamente';
     $_SESSION['message_type'] = 'warning';
@@ -37,20 +39,20 @@ if (isset($_POST['cancell'])) {
 
 <head>
     <?php include "include/head.php" ?>
-    <title>Editar entradas</title>
+    <title>Editar salidas</title>
 </head>
 
 <?php include('include/navbar.php'); ?>
 
 <div class="container p-4">
-    <h3 class="offset-3 col-10">Editar entrada</h3><br>
+    <h3 class="offset-3 col-10">Editar salida</h3><br>
     <div class="card w-50 card-body offset-3 ">
         <!-- <div id="result"></div> -->
-        <form action="editarEntrada.php?idEntrada=<?php echo $_GET['idEntrada']; ?>" method="POST">
+        <form action="editarEntrada.php?idSalida=<?php echo $_GET['idSalida']; ?>" method="POST">
             <div class="form-group mb-3">
                 <label class="form-label">Nombre del producto</label>
                 <?php foreach ($conn->query("SELECT * from productos p 
-                                            INNER JOIN entradas e ON e.idProducto = p.idProducto WHERE e.idEntrada = $idEntrada") as $row) {
+                                            INNER JOIN entradas e ON e.idProducto = p.idProducto WHERE e.idSalida = $idSalida") as $row) {
                 ?>
                     <input type="text" class="form-control" disabled value="<?php echo $row['nombreProducto'], ' (' . $row['unidadMedida'] . ')' ?>">
                 <?php

@@ -50,12 +50,47 @@ if (isset($_POST['cancell'])) {
                     </div>
                     <div class="form-group mb-3">
                         <label for="cantidad" class="form-label">Unidad de medida</label>
-                        <select class="form-select" name="unidadMedida" required>
-                            <option value="unidad">Unidad</option>
-                            <option value="kilogramo">Kilogramo</option>
-                            <option value="gramo">Gramo</option>
-                            <option value="mililitro">Mililitro</option>
-                            <option value="gramo">Litro</option>
+                        <select class="form-select" name="unidadMedida" >
+                            <option value="<?php echo $unidadMedida?>">
+                            <?php 
+                            $unidadM = $unidadMedida;
+                            $unidadM = ucfirst($unidadM);
+                            echo $unidadM
+                            ?>
+                            </option>
+                            <?php
+                            if($unidadMedida === 'unidad'){ ?>
+                                <option value="kilogramo">Kilogramo</option>
+                                <option value="gramo">Gramo</option>
+                                <option value="mililitro">Mililitro</option>
+                                <option value="litro">Litro</option>
+                            <?php
+                            } elseif ($unidadMedida === 'kilogramo'){ ?>
+                                <option value="unidad">Unidad</option>
+                                <option value="gramo">Gramo</option>
+                                <option value="mililitro">Mililitro</option>
+                                <option value="litro">Litro</option>
+                            <?php
+                            } elseif ($unidadMedida === 'gramo'){ ?>
+                                <option value="unidad">Unidad</option>
+                                <option value="kilogramo">Kilogramo</option>
+                                <option value="mililitro">Mililitro</option>
+                                <option value="litro">Litro</option>
+                            <?php
+                            } elseif ($unidadMedida === 'mililitro'){ ?>
+                                <option value="unidad">Unidad</option>
+                                <option value="kilogramo">Kilogramo</option>
+                                <option value="gramo">Gramo</option>
+                                <option value="litro">Litro</option>
+                            <?php
+                            } elseif ($unidadMedida === 'litro'){ ?>
+                                <option value="unidad">Unidad</option>
+                                <option value="kilogramo">Kilogramo</option>
+                                <option value="gramo">Gramo</option>
+                                <option value="mililitro">Mililitro</option>
+                            <?php
+                            }
+                            ?>
                         </select>
                     </div>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
