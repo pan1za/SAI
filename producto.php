@@ -25,7 +25,7 @@ include "config/conexion.php";
                     <option value="kilogramo">Kilogramo</option>
                     <option value="gramo">Gramo</option>
                     <option value="mililitro">Mililitro</option>
-                    <option value="gramo">Litro</option>
+                    <option value="litro">Litro</option>
                 </select>
             </div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
