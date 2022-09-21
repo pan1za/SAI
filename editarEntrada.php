@@ -4,6 +4,8 @@ $totalEntrada = '';
 $fechaEntrada = '';
 $fechaVencimiento = '';
 
+//modificar trigger de entrada, ya que si se hace una modificacion de una cantidad y ya existe una salida, no se actualiza el valor que debe ser en el inventario 
+
 if (isset($_GET['idEntrada'])) {
     $idEntrada = $_GET['idEntrada'];
     $query = "SELECT * FROM entradas WHERE idEntrada=$idEntrada";
@@ -24,7 +26,7 @@ if (isset($_POST['update'])) {
 
     $query = "UPDATE entradas set totalEntrada = '$totalEntrada', fechaEntrada = '$fechaEntrada', fechaVencimiento = '$fechaVencimiento' WHERE idEntrada=$idEntrada";
     mysqli_query($conn, $query);
-    $_SESSION['message'] = 'Producto editado correctamente';
+    $_SESSION['message'] = 'Entrada editada correctamente';
     $_SESSION['message_type'] = 'warning';
     header('Location: listaEntradas.php');
 }
