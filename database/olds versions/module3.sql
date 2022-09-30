@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-09-2022 a las 20:04:31
+-- Tiempo de generación: 06-09-2022 a las 18:55:30
 -- Versión del servidor: 8.0.30
 -- Versión de PHP: 8.0.19
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `module3`
+-- Base de datos: `module`
 --
 
 -- --------------------------------------------------------
@@ -47,74 +47,7 @@ INSERT INTO `entradas` (`idEntrada`, `totalEntrada`, `fechaEntrada`, `fechaVenci
 (8, 35, '2022-09-01', '2023-01-28', 'Sin inconvenientes', 9, 3),
 (9, 15, '2022-09-02', '2022-09-23', 'Sin inconvenientes', 8, 2),
 (10, 20, '2022-09-03', '2022-11-26', 'Sin inconvenientes', 10, 2),
-(11, 5, '2022-09-06', '2022-09-06', 'Sin inconvenientes', 1, 2),
-(12, 50, '2022-09-07', '2022-12-10', 'Sin inconvenientes', 11, 4),
-(13, 8, '2022-09-07', '2022-11-10', 'Sin inconvenientes', 12, 4),
-(14, 11, '2022-09-20', '2022-10-21', 'Sin inconvenientes', 14, 3),
-(15, 49, '2022-08-28', '2022-12-16', 'Sin inconvenientes', 16, 5),
-(16, 22, '2022-09-22', '2022-10-20', 'Sin inconvenientes', 16, 5),
-(17, 26, '2022-09-23', '2022-11-10', 'Sin inconvenientes', 16, 5);
-
---
--- Disparadores `entradas`
---
-DELIMITER $$
-CREATE TRIGGER `insert_inventario` AFTER INSERT ON `entradas` FOR EACH ROW BEGIN
-INSERT INTO inventario (`totalActual`, `idProducto`, `idEntrada`) VALUES (NEW.totalEntrada, NEW.idProducto, NEW.idEntrada);
-END
-$$
-DELIMITER ;
-DELIMITER $$
-CREATE TRIGGER `update_inventario` AFTER UPDATE ON `entradas` FOR EACH ROW BEGIN
-    IF EXISTS (SELECT * FROM salidas s WHERE NEW.idEntrada = 		s.idEntrada) THEN BEGIN
-      UPDATE inventario i 
-      INNER JOIN entradas e ON e.idEntrada = i.idEntrada
-      INNER JOIN salidas s ON s.idEntrada = e.idEntrada
-      SET totalActual = NEW.totalEntrada - s.totalSalida
-	WHERE e.idEntrada = NEW.idEntrada;
-    END; END IF;
-    IF !EXISTS(SELECT * FROM salidas s WHERE NEW.idEntrada = 		s.idEntrada) THEN BEGIN
-      UPDATE inventario i 
-      INNER JOIN entradas e ON e.idEntrada = i.idEntrada
-      SET i.totalActual = NEW.totalEntrada 		
-      WHERE e.idEntrada = NEW.idEntrada;
-    END; END IF;
-END
-$$
-DELIMITER ;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `inventario`
---
-
-CREATE TABLE `inventario` (
-  `idInventario` int NOT NULL,
-  `totalActual` int DEFAULT NULL,
-  `idProducto` int NOT NULL,
-  `idEntrada` int NOT NULL,
-  `idSalida` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
-
---
--- Volcado de datos para la tabla `inventario`
---
-
-INSERT INTO `inventario` (`idInventario`, `totalActual`, `idProducto`, `idEntrada`, `idSalida`) VALUES
-(10, 10, 1, 1, 4),
-(11, 8, 2, 6, 10),
-(12, 7, 8, 7, 6),
-(13, 4, 9, 8, 8),
-(14, 2, 8, 9, 13),
-(15, 6, 10, 10, 12),
-(16, 5, 1, 11, NULL),
-(17, 26, 11, 12, 23),
-(18, 8, 12, 13, NULL),
-(19, 9, 14, 14, 24),
-(20, 26, 16, 15, 27),
-(21, 5, 16, 16, 26),
-(22, 26, 16, 17, NULL);
+(11, 5, '2022-09-06', '2022-09-06', 'Sin inconvenientes', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -138,12 +71,7 @@ INSERT INTO `productos` (`idProducto`, `nombreProducto`, `unidadMedida`) VALUES
 (7, 'Agua', 'mililitro'),
 (8, 'Camarones', 'gramo'),
 (9, 'Arroz', 'kilogramo'),
-(10, 'Aceite', 'mililitro'),
-(11, 'Papa criolla', 'kilogramo'),
-(12, 'Vino', 'mililitro'),
-(13, 'Salchicha', 'unidad'),
-(14, 'Champiñones', 'mililitro'),
-(16, 'Prueba producto', 'litro');
+(10, 'Aceite', 'mililitro');
 
 -- --------------------------------------------------------
 
@@ -166,41 +94,22 @@ CREATE TABLE `salidas` (
 
 INSERT INTO `salidas` (`idSalida`, `totalSalida`, `fechaSalida`, `idUsuario`, `idProducto`, `idEntrada`) VALUES
 (4, 10, '2022-09-06', 3, 1, 1),
-(5, 7, '2022-09-06', 3, 8, 9),
+(5, 15, '2022-09-06', 3, 8, 9),
 (6, 18, '2022-09-06', 2, 8, 7),
-(7, 18, '2022-09-06', 2, 9, 8),
+(7, 24, '2022-09-06', 2, 9, 8),
 (8, 13, '2022-09-06', 3, 9, 8),
 (9, 20, '2022-09-06', 3, 2, 6),
 (10, 2, '2022-09-06', 2, 2, 6),
 (11, 8, '2022-09-06', 3, 10, 10),
 (12, 6, '2022-09-06', 2, 10, 10),
-(13, 6, '2022-09-06', 3, 8, 9),
-(22, 15, '2022-09-07', 4, 11, 12),
-(23, 9, '2022-09-07', 5, 11, 12),
-(24, 2, '2022-09-20', 3, 14, 14),
-(25, 17, '2022-09-22', 5, 16, 16),
-(26, 7, '2022-09-22', 5, 16, 16),
-(27, 23, '2022-09-24', 5, 16, 15);
-
---
--- Disparadores `salidas`
---
-DELIMITER $$
-CREATE TRIGGER `insert_inventario_2` AFTER INSERT ON `salidas` FOR EACH ROW BEGIN
-UPDATE inventario SET totalActual = totalActual - NEW.totalSalida, idSalida = NEW.idSalida 
-WHERE idEntrada = NEW.idEntrada;
-END
-$$
-DELIMITER ;
-DELIMITER $$
-CREATE TRIGGER `update_inventario2` AFTER UPDATE ON `salidas` FOR EACH ROW BEGIN
-UPDATE inventario i
-INNER JOIN entradas e ON e.idEntrada = i.idEntrada
-SET i.totalActual = e.totalEntrada - NEW.totalSalida
-WHERE i.idEntrada = NEW.idEntrada;
-END
-$$
-DELIMITER ;
+(13, 9, '2022-09-06', 3, 8, 9),
+(14, 3, '2022-09-06', 2, 1, 11),
+(15, 4, '2022-09-06', 2, 1, 11),
+(16, 6, '2022-09-06', 3, 8, 7),
+(17, 11, '2022-09-06', 2, 10, 10),
+(18, 3, '2022-09-06', 3, 8, 9),
+(20, 9, '2022-09-06', 3, 10, 10),
+(21, 4, '2022-09-06', 3, 8, 7);
 
 -- --------------------------------------------------------
 
@@ -225,9 +134,7 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` (`idUsuario`, `nombres`, `apellidos`, `email`, `password`, `username`, `usertype`) VALUES
 (1, 'Gustavo', 'Paniza', 'panizagustavo@gmail.com', '123', 'gustavopaniza', 'admin'),
 (2, 'Adolfo', 'Salas', 'adolfosalas@gmail.com', '123', 'adolfosalas', 'user'),
-(3, 'Andres', 'Santamaria', 'andressantamaria@gmail.com', '123', 'andressantamaria', 'user'),
-(4, 'Juan', 'Melendez', 'juanmelendez@gmail.com', '123', 'juanmelendez', 'user'),
-(5, 'Jose', 'Alvarez', 'josealvarez@gmail.com', '123', 'josealvarez', 'user');
+(3, 'Andres', 'Santamaria', 'andressantamaria@gmail.com', '123', 'andressantamaria', 'user');
 
 --
 -- Índices para tablas volcadas
@@ -240,15 +147,6 @@ ALTER TABLE `entradas`
   ADD PRIMARY KEY (`idEntrada`),
   ADD KEY `idUsuario_idx` (`idUsuario`),
   ADD KEY `idProducto_idx` (`idProducto`);
-
---
--- Indices de la tabla `inventario`
---
-ALTER TABLE `inventario`
-  ADD PRIMARY KEY (`idInventario`),
-  ADD KEY `idProducto_idx` (`idProducto`) INVISIBLE,
-  ADD KEY `idEntrada_idx` (`idEntrada`) INVISIBLE,
-  ADD KEY `idSalida_idx` (`idSalida`);
 
 --
 -- Indices de la tabla `productos`
@@ -279,31 +177,25 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `entradas`
 --
 ALTER TABLE `entradas`
-  MODIFY `idEntrada` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
-
---
--- AUTO_INCREMENT de la tabla `inventario`
---
-ALTER TABLE `inventario`
-  MODIFY `idInventario` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `idEntrada` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `idProducto` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `idProducto` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `salidas`
 --
 ALTER TABLE `salidas`
-  MODIFY `idSalida` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `idSalida` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idUsuario` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idUsuario` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
@@ -315,14 +207,6 @@ ALTER TABLE `usuarios`
 ALTER TABLE `entradas`
   ADD CONSTRAINT `idProducto` FOREIGN KEY (`idProducto`) REFERENCES `productos` (`idProducto`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `idUsuario` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `inventario`
---
-ALTER TABLE `inventario`
-  ADD CONSTRAINT `idEntrada__` FOREIGN KEY (`idEntrada`) REFERENCES `entradas` (`idEntrada`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `idProducto__` FOREIGN KEY (`idProducto`) REFERENCES `productos` (`idProducto`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `idSalida__` FOREIGN KEY (`idSalida`) REFERENCES `salidas` (`idSalida`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `salidas`

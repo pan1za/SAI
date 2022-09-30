@@ -9,7 +9,7 @@ include "config/conexion.php";
 <?php include "include/navbar.php" ?>
 
 <main class="container p-4">
-    <h3 class="offset-5 col-10">Lista de salidas</h3><br>
+    <h3 class="offset-5 col-10">Lista de salidas de la sede <?php echo $nombreSede ?></h3><br>
     <div class="w-40 card-body ">
         <table class="table table-bordered">
             <thead class="thead-dark" align="center">
@@ -19,13 +19,15 @@ include "config/conexion.php";
                     <th scope="col">Fecha de salida</th>
                     <th scope="col">ID de la Entrada</th>
                     <th scope="col">Realizada por</th>
+                    <th scope="col">Sede</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
             <tbody align="center">
-                <?php foreach ($conn->query('SELECT salidas.idProducto, productos.nombreProducto, salidas.idSalida, salidas.totalSalida, salidas.fechaSalida, salidas.idEntrada, 
-                usuarios.nombres, usuarios.apellidos FROM salidas, productos, usuarios WHERE productos.idProducto = salidas.idProducto AND 
-                usuarios.idUsuario = salidas.idUsuario ORDER BY salidas.idSalida;') as $row) {
+                <?php foreach ($conn->query("SELECT s.idProducto, p.nombreProducto, s.idSalida, s.totalSalida, s.fechaSalida, s.idEntrada, u.nombres, u.apellidos, se.nombre
+                FROM salidas s, productos p, usuarios u, sede se 
+                WHERE p.idProducto = s.idProducto AND u.idUsuario = s.idUsuario  AND se.idSede = p.idSede AND p.idSede = '$idSede'
+                ORDER BY s.idSalida;") as $row) {
                 ?>
                     <tr>
                         <td><?php echo $row['nombreProducto'] ?></td>
@@ -33,6 +35,7 @@ include "config/conexion.php";
                         <td><?php echo $row['fechaSalida'] ?></td>
                         <td><?php echo $row['idEntrada'] ?></td>
                         <td><?php echo $row['nombres'] . ' ' . $row['apellidos'] ?></td>
+                        <td><?php echo $row['nombre'] ?></td>
                         <td>
                             <a href="editarSalida.php?idSalida=<?php echo $row['idSalida']?>" class="btn btn-secondary">
                                 <i class="fas fa-marker"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">

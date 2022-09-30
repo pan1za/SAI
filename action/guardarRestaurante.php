@@ -2,15 +2,14 @@
     session_start();
     include "../config/conexion.php";
 
-    $nombreProducto = $_POST["nombreProducto"];
-    $unidadMedida = $_POST["unidadMedida"];
-    $idSede = $_SESSION["id_sede"];
+    $nombreRestaurante = $_POST["nombreRestaurante"];
+    $nit = $_POST["nit"];
 
-    $query = "INSERT INTO `productos`(`nombreProducto`, `unidadMedida`, `idSede`) VALUES ('$nombreProducto', '$unidadMedida', '$idSede')";
+    $query = "INSERT INTO `restaurante`(`nombre`, `nit`) VALUES ('$nombreRestaurante', '$nit')";
     $result = mysqli_query($conn, $query);
 
     if ($result) {
-        $messages[] = "Producto registrado";
+        $messages[] = "Restaurante registrado";
     } else {
         $errors[] = "Algo ha salido mal, intenta nuevamente." . mysqli_error($conn);
     }

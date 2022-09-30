@@ -13,7 +13,7 @@
         $result = mysqli_query($conn, $query);
 
         if ($result) {
-            $messages[] = "Producto registrado";
+            $messages[] = "Salida registrada";
         } else {
             $errors[] = "Algo ha salido mal, intenta nuevamente." . mysqli_error($conn);
         }

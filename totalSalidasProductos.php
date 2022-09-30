@@ -9,7 +9,7 @@ include "config/conexion.php";
 <?php include "include/navbar.php" ?>
 
 <main class="container p-4">
-    <h3 class="offset-4 col-10">Total de salidas por productos</h3><br>
+    <h3 class="offset-3 col-10">Total de salidas por productos de la sede <?php echo $nombreSede ?></h3><br>
     <div class="w-50 card-body offset-3">
         <table class="table table-bordered">
             <thead class="thead-dark" align="center">
@@ -19,8 +19,11 @@ include "config/conexion.php";
                 </tr>
             </thead>
             <tbody align="center">
-                <?php foreach ($conn->query('SELECT p.nombreProducto, SUM(totalSalida) as totalSalidaProductos, p.unidadMedida 
-                FROM productos p INNER JOIN salidas s ON s.idProducto = p.idProducto GROUP BY p.nombreProducto;') as $row) {
+                <?php foreach ($conn->query("SELECT p.nombreProducto, SUM(totalSalida) as totalSalidaProductos, p.unidadMedida 
+                FROM productos p 
+                INNER JOIN salidas s ON s.idProducto = p.idProducto 
+                WHERE p.idSede = '$idSede'
+                GROUP BY p.nombreProducto;") as $row) {
                 ?>
                     <tr>
                         <td><?php echo $row['nombreProducto'] ?></td>

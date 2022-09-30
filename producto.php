@@ -12,7 +12,7 @@ include "config/conexion.php";
     <h3 class="offset-3 col-10">Registro de productos</h3><br>
     <div class="card w-50 card-body offset-3 ">
         <div id="result"></div>
-        <form id="agregarProduto" name="agregarProduto" method="POST">
+        <form id="agregarProducto" name="agregarProducto" method="POST">
             <div class="form-group mb-3">
                 <label for="nombreProducto" class="form-label">Nombre del producto</label>
                 <input type="text" class="form-control" name="nombreProducto" required autofocus>
@@ -36,7 +36,7 @@ include "config/conexion.php";
 </div>
 
 <script>
-    $("#agregarProduto").submit(function(event) {
+    $("#agregarProducto").submit(function(event) {
         $('#guardarProducto').attr("disabled", true);
 
         var parametros = $(this).serialize();

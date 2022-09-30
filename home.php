@@ -7,7 +7,6 @@ if($usertype != "user"){
 }
 
 include "include/navbar.php";
-// include "include/sidebar.php";
 ?>
 
 <!DOCTYPE html>
@@ -17,6 +16,6 @@ include "include/navbar.php";
 </head>
 <body>
 
-    <h3>Bienvenido <?php echo $nombres . ' ' . $apellidos ?></h3>
+    <h3>Bienvenido <?php echo $nombres . ' ' . $apellidos . ', usted hace parte del restaurante ' .$nombreRestaurante . ' sede ' .$nombreSede?></h3>
 </body>
 </html>

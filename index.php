@@ -54,47 +54,9 @@ if (isset($_SESSION["user_id"])=== true) {
                 <div class="form-group mt-3">
                     <button type="submit" name="login" value="login" class="btn btn-primary btn-flat w-100">Iniciar Sesion</button>
                 </div>
-                <div>
-                    <p>¿No tienes cuenta? <a href="register.php">Regístrate</a></p>
-                </div>
             </form>
         </div>
     </div>
-
-    <!-- <body>
-
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="text-end">
-                    <img src="img/logo2.png" width="48px" alt="">
-                </div>
-                <h2 class="fw-bold text-center py-5">Bienvenido</h2>
-
-                <form action="#">
-                    <div class="mb-4">
-                        <label for="email" class="form-label">Correo electronico</label>
-                        <input type="email" class="form-control" name="email">
-                    </div>
-                    <div class="mb-4">
-                        <label for="password" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" name="password">
-                    </div>
-                    <div class="mb-4 form-check">
-                        <input type="checkbox" name="connected" class="form-check-input">
-                        <label for="connected" class="form-check-label">Mantenerme conectado</label>
-                    </div>
-                    <div class="d-grid">
-                        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
-                    </div>
-                    <div class="my-3">
-                        <span>¿No tienes cuenta? <a href="#">Regístrate</a></span><br>
-                        <span><a href="#">Recuperar contraseña</a></span>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div> -->
 
     <script>
         <?php

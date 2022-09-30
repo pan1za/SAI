@@ -9,25 +9,27 @@ include "config/conexion.php";
 <?php include "include/navbar.php" ?>
 
 <div class="container p-4">
-    <h3 class="offset-3 col-10">Total de productos en inventario de la sede <?php echo $nombreSede ?></h3><br>
+    <h3 class="offset-3 col-10">Total de productos en inventario</h3><br>
     <div class="w-50 card-body offset-3">
         <table class="table table-bordered">
             <thead class="thead-dark" align="center">
                 <tr>
                     <th scope="col">Nombre del producto</th>
                     <th scope="col">Total inventario</th>
+                    <th scope="col">Sede</th>
                 </tr>
             </thead>
             <tbody align="center">
-                <?php foreach ($conn->query("SELECT p.nombreProducto, SUM(i.totalActual) as totalActual, p.unidadMedida 
+                <?php foreach ($conn->query("SELECT p.nombreProducto, SUM(i.totalActual) as totalActual, p.unidadMedida, s.nombre
                 FROM productos p 
                 INNER JOIN inventario i ON i.idProducto = p.idProducto 
-                WHERE p.idSede = '$idSede'
+                INNER JOIN sede s ON s.idSede = p.idSede
                 GROUP BY p.nombreProducto;") as $row) {
                 ?>
                     <tr>
                         <td><?php echo $row['nombreProducto'] ?></td>
                         <td><?php echo $row['totalActual'] . ' &nbsp' . $row['unidadMedida'] . '(s)'?></td>
+                        <td><?php echo $row['nombre'] ?></td>
                     </tr>
                 <?php
                 }

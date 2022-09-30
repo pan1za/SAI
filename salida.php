@@ -22,7 +22,7 @@ include "include/navbar.php";
                 <select class="form-select" id="producto" name="producto" required>
                     <option selected disabled>Seleccione un producto</option>
                     <?php 
-                        $query = "SELECT * FROM productos";
+                        $query = "SELECT * FROM productos WHERE idSede = '$idSede'";
                         $result = mysqli_query($conn,$query);
                         while($row=mysqli_fetch_array($result)){
                             echo '<option value='.$row['idProducto'].'>'.$row['nombreProducto'].' ('.$row['unidadMedida'].')'.'</option>';

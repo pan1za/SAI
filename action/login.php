@@ -16,6 +16,7 @@
             exit;
         }elseif($row["usertype"]=="user"){
             $_SESSION["user_id"] = $row["idUsuario"];
+            $_SESSION["id_sede"] = $row["idSede"];
             session_start();
 
             // if(isset($_SESSION['email'])){

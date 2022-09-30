@@ -8,6 +8,7 @@
     $email = $_POST["email"];
     $password = $_POST["password"];
 	$username = strstr($email, '@', true);
+	$idSede = $_POST["sede"];
     $query = "select * from usuarios where (email = \"$email\")";
     $result = mysqli_query($conn,$query);
     $row = mysqli_num_rows($result);
@@ -15,8 +16,8 @@
     if($row > 0){
         $errors [] = "El correo ya existe en la base de datos";
     }else{
-        $query = "INSERT INTO `usuarios`(`nombres`, `apellidos`, `email`, `password`, `username`)
-        VALUES ('$nombres','$apellidos', '$email', '$password','$username')";
+        $query = "INSERT INTO `usuarios`(`nombres`, `apellidos`, `email`, `password`, `username`, `idSede`)
+        VALUES ('$nombres','$apellidos', '$email', '$password','$username','$idSede')";
         $query_new_insert = mysqli_query($conn,$query);
 
 		if ($query_new_insert){

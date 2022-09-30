@@ -9,7 +9,7 @@ include "config/conexion.php";
 <?php include "include/navbar.php" ?>
 
 <main class="container p-4">
-    <h3 class="offset-4 col-10">Lista de entradas de la sede <?php echo $nombreSede ?></h3><br>
+    <h3 class="offset-4 col-10">Lista de todas las entradas</h3><br>
     <div class="w-40 card-body ">
         <table class="table table-bordered">
             <thead class="thead-dark" align="center">
@@ -27,7 +27,7 @@ include "config/conexion.php";
             <tbody align="center">
                 <?php foreach ($conn->query("SELECT p.nombreProducto, idEntrada, totalEntrada, fechaEntrada, fechaVencimiento, u.nombres, u.apellidos, s.nombre
                 FROM productos p, entradas e, usuarios u, sede s
-                WHERE p.idProducto = e.idProducto AND u.idUsuario = e.idUsuario AND s.idSede = p.idSede AND p.idSede = '$idSede'") as $row) {
+                WHERE p.idProducto = e.idProducto AND u.idUsuario = e.idUsuario AND s.idSede = p.idSede") as $row) {
                 ?>
                     <tr>
                         <td><?php echo $row['nombreProducto'] ?></td>

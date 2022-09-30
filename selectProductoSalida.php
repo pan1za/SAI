@@ -2,7 +2,7 @@
     include "config/conexion.php";
 
     $idProducto = $_POST["idProducto"];
-
+ 
     if(isset($idProducto)){
         $query = "SELECT e.idEntrada, e.fechaEntrada, i.totalActual, p.unidadMedida
         FROM entradas e

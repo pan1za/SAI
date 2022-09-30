@@ -17,7 +17,7 @@ include "config/conexion.php";
                 <label class="form-label">Nombre del producto</label>
                 <select class="form-select" name="idProducto" required>
                     <option selected disabled value="">Seleccione un producto</option>
-                    <?php foreach ($conn->query('SELECT * from productos') as $row) {
+                    <?php foreach ($conn->query("SELECT * from productos WHERE idSede = '$idSede'") as $row) {
                     ?>
                         <option value="<?php echo $idProducto = $row["idProducto"]?>"><?php echo $row['nombreProducto'], ' (' . $row['unidadMedida'] . ')' ?></option>
                     <?php

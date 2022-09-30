@@ -9,7 +9,7 @@ include "config/conexion.php";
 <?php include "include/navbar.php" ?>
 
 <main class="container p-4">
-    <h3 class="offset-5 col-10">Lista de productos</h3><br>
+    <h3 class="offset-4 col-10">Lista de productos de la sede <?php echo $nombreSede ?></h3><br>
     <div class="w-50 card-body offset-3">
         <table class="table table-bordered">
             <thead class="thead-dark" align="center">
@@ -20,7 +20,10 @@ include "config/conexion.php";
                 </tr>
             </thead>
             <tbody align="center">
-                <?php foreach ($conn->query('SELECT * from productos') as $row) {
+                <?php foreach ($conn->query("SELECT p.idProducto, p.nombreProducto, p.unidadMedida, s.nombre 
+                from productos p 
+                INNER JOIN sede s ON s.idSede = p.idSede 
+                where s.idSede = '$idSede'") as $row) {
                 ?>
                     <tr>
                         <td><?php echo $row['nombreProducto'] ?></td>
@@ -45,5 +48,10 @@ include "config/conexion.php";
                 ?>
             </tbody>
         </table>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <form method="POST" action="create_excel.php">
+				<button class="btn btn-success pull-right" name="export"><span class="glyphicon glyphicon-print"></span> Exportar a Excel</button>
+			</form>
+        </div>
     </div>
 </main>

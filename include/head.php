@@ -5,15 +5,40 @@
     if (!isset($_SESSION["user_id"]) || $_SESSION["user_id"] == null) {
         header("location: index.php");
     }
+    
     $my_user_id = $_SESSION["user_id"];
-    $query = mysqli_query($conn,"SELECT * from usuarios where idUsuario = $my_user_id");
-    while($row = mysqli_fetch_array($query)){
-        $nombres = $row['nombres'];
-        $apellidos = $row['apellidos'];
-        $email = $row['email'];
-        $username = $row['username'];
-        $usertype = $row['usertype'];
+
+    if ($my_user_id != "admin"){
+        $query = mysqli_query($conn,"SELECT u.nombres, u.apellidos, u.email, u.username, u.usertype, r.idRestaurante, 
+                                r.nombre as nombreRestaurante, u.idSede, s.nombre as nombreSede
+                                from usuarios u 
+                                INNER JOIN sede s ON s.idSede = u.idSede
+                                INNER JOIN restaurante r ON r.idRestaurante = s.idRestaurante
+                                where idUsuario = $my_user_id");
+        while($row = mysqli_fetch_array($query)){
+            $nombres = $row['nombres'];
+            $apellidos = $row['apellidos'];
+            $email = $row['email'];
+            $username = $row['username'];
+            $usertype = $row['usertype'];
+            $idRestaurante = $row['idRestaurante'];
+            $nombreRestaurante= $row['nombreRestaurante'];
+            $idSede = $row['idSede'];
+            $nombreSede = $row['nombreSede'];
+        }
     }
+    
+    if ($my_user_id != "user"){
+        $query = mysqli_query($conn,"SELECT u.nombres, u.apellidos, u.email, u.username, u.usertype from usuarios u where idUsuario = $my_user_id");
+        while($row = mysqli_fetch_array($query)){
+            $nombres = $row['nombres'];
+            $apellidos = $row['apellidos'];
+            $email = $row['email'];
+            $username = $row['username'];
+            $usertype = $row['usertype'];
+        }
+    }
+    
 ?>
 
 <meta charset="UTF-8">
